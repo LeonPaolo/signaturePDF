@@ -32,6 +32,8 @@ if(isset($_FILES['file-input']) && isset($_POST['name']))
     //nome da assinatura do PDF
     $signature = $name.'_'.$date.'_'.$str_replace.'_'.$rand;
 
+    $signature = str_replace(' ', '_', $signature);
+
     //Salvando o arquivo na pasta
     $file = $directory . basename($new_name_file); 
     if (move_uploaded_file($_FILES["file-input"] ["tmp_name"], $file)) {
