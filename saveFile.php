@@ -51,8 +51,19 @@ if(isset($_FILES['file-input']) && isset($_POST['name']))
         $pdf->Write(10, $signature);
         //adicionando uma imagem
         $pdf->Image('assets/img/features-2.png', 90, 248, 40, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        //adicionando pasta para salvar PDF modificados
+        $directoryModified = "Files_Pdf_modified/";
+        if (!file_exists($directoryModified)) {
+            mkdir($directoryModified, 0777, true);
+        }
         //Gerando o PDF
-        $pdf->Output('Files_Pdf/VYWQ_15_12_2020.pdf', 'I');  
+        // I: send the file inline to the browser. The PDF viewer is used if available.
+        // D: send to the browser and force a file download with the name given by name.
+        // F: save to a local file with the name given by name (may include a path).
+        // S: return the document as a string.
+        $test = $pdf->Output('F','Files_Pdf_modified/'. $signature.'_modified.pdf');  
+        //retornando para tela inicial
+        header("Location: /index.php");
     }else{
         echo "Erro em salvar arquivo!";
     }
