@@ -47,7 +47,7 @@
         <span>Recarregar</span>
       </a>
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar ">
         <ul>
           <li><a class="getstarted scrollto" href="list.php">Meus PDF</a></li>
         </ul>
